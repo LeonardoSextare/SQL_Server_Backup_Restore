@@ -1,9 +1,5 @@
 from PySide6.QtWidgets import QWizard
-from .WelcomePage import WelcomePage
-from .License import LicensePage
-from .Installer import InstallPage
-from .Finish import ConclusionPage
-from .Configuration import ConfigurationPage
+from .pages import *
 
 class InstallerWizard(QWizard):
     def __init__(self, model, controller, parent=None):

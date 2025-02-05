@@ -1,6 +1,8 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from sources import * 
+from controller import * 
+from model import * 
+from view import * 
 
 def main():
     app = QApplication(sys.argv)

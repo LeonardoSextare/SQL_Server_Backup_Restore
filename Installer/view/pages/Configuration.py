@@ -1,6 +1,4 @@
-import sys
-from PySide6.QtCore import QObject, Signal, QTimer
-from PySide6.QtWidgets import QWizardPage, QVBoxLayout, QLabel, QCheckBox, QProgressBar, QLineEdit, QPushButton, QHBoxLayout, QComboBox, QFileDialog
+from PySide6.QtWidgets import QWizardPage, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QComboBox, QFileDialog
 
 
 class ConfigurationPage(QWizardPage):
