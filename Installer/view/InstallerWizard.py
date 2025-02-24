@@ -11,7 +11,6 @@ class InstallerWizard(QWizard):
 
         # Adiciona as páginas do wizard
         self.addPage(WelcomePage())
-        self.addPage(LicensePage(model, controller))
         self.addPage(ConfigurationPage(model, controller))
         self.addPage(InstallPage(model, controller))
         self.addPage(ConclusionPage())
