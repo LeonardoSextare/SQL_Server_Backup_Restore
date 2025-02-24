@@ -1,11 +1,12 @@
 from PySide6.QtWidgets import QWizardPage, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QComboBox, QFileDialog
 
-
 class ConfigurationPage(QWizardPage):
-    def __init__(self, model, controller, parent=None):
+    def __init__(self, context, parent=None):
         super().__init__(parent)
-        self.model = model
-        self.controller = controller
+        self.context = context
+        self.model = self.context.installer_model
+        self.controller = self.context.installer_controller
+        
         self.setTitle("Configuração")
         self.setSubTitle("Escolha o local de instalação, a instância do SQL Server e o local onde serão armazenadas as bases de dados restauradas")
 
