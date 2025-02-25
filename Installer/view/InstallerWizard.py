@@ -10,8 +10,7 @@ class InstallerWizard(QWizard):
         self.setWindowTitle("SQL Server Backup Restorer - Installer")
         self.setWizardStyle(QWizard.ModernStyle)
 
-        # Adiciona as páginas do wizard
         self.addPage(WelcomePage())
         self.addPage(ConfigurationPage(context))
-        self.addPage(InstallPage(context))
+        # self.addPage(InstallPage(context))
         self.addPage(ConclusionPage())

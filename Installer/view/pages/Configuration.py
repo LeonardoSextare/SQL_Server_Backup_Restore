@@ -1,12 +1,13 @@
 from PySide6.QtWidgets import QWizardPage, QVBoxLayout, QLabel, QLineEdit, QPushButton, QHBoxLayout, QComboBox, QFileDialog
 
+
 class ConfigurationPage(QWizardPage):
     def __init__(self, context, parent=None):
         super().__init__(parent)
         self.context = context
-        self.model = self.context.installer_model
-        self.controller = self.context.installer_controller
-        
+        self.model = self.context.configuration_model
+        self.controller = self.context.configuration_controller
+
         self.setTitle("Configuração")
         self.setSubTitle("Escolha o local de instalação, a instância do SQL Server e o local onde serão armazenadas as bases de dados restauradas")
 
@@ -14,7 +15,7 @@ class ConfigurationPage(QWizardPage):
 
         layout.addWidget(QLabel("Local de Instalação:"))
         self.install_path_line_edit = QLineEdit()
-        self.install_path_line_edit.setText("C:/Program Files/SQL Backup Restorer")
+        self.install_path_line_edit.setText(self.model.installation_path)
         self.install_path_line_edit.setPlaceholderText("Selecione o local de instalação")
         self.install_path_line_edit.textChanged.connect(self.on_installation_path_changed)
         layout.addWidget(self.install_path_line_edit)
@@ -22,6 +23,7 @@ class ConfigurationPage(QWizardPage):
         layout.addWidget(QLabel("Local de Armazenamento das Bases Restauradas:"))
         path_layout = QHBoxLayout()
         self.storage_database_path_line_edit = QLineEdit()
+        self.storage_database_path_line_edit.setText(self.model.backup_storage_path)
         self.storage_database_path_line_edit.setPlaceholderText("Digite o caminho ou clique em 'Procurar...'")
         self.storage_database_path_line_edit.textChanged.connect(self.on_path_changed)
         path_layout.addWidget(self.storage_database_path_line_edit)
@@ -33,7 +35,7 @@ class ConfigurationPage(QWizardPage):
 
         layout.addWidget(QLabel("Instância do SQL Server:"))
         self.sql_instance_combo = QComboBox()
-        self.sql_instance_combo.addItems(["MSSQLSERVER", "SQLEXPRESS", "SQL2019"])
+        self.sql_instance_combo.addItems(self.controller.get_sql_instances())
         self.sql_instance_combo.currentIndexChanged.connect(self.on_sql_instance_changed)
         layout.addWidget(self.sql_instance_combo)
 
